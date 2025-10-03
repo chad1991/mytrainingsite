@@ -1,1 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Training Site — Learning Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#98a0b3;
+      --accent:#7c5cff;
+      --accent-2:#34d399;
+      --glass: rgba(255,255,255,0.03);
+      --code-bg:#071228;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; margin:0; background:linear-gradient(180deg,#071023 0%, #081123 40%, #071022 100%); color:#e6eef8}
+    a{color:var(--accent); text-decoration:none}
+    header{background:linear-gradient(90deg, rgba(124,92,255,0.12), rgba(52,211,153,0.06)); padding:28px 20px; border-bottom:1px solid rgba(255,255,255,0.03)}
+    .wrap{max-width:var(--maxw); margin:0 auto;}
+    .top{display:flex;gap:20px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:16px;align-items:center}
+    .logo{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#5af0d0);display:flex;align-items:center;justify-content:center;font-weight:700;color:#05111b}
+    .title{line-height:1}
+    .title h1{margin:0;font-size:20px}
+    .title p{margin:0;color:var(--muted);font-size:13px}
+
+    nav{margin-top:18px}
+    .nav-grid{display:flex;gap:10px;flex-wrap:wrap}
+    .nav-grid button{background:var(--glass);border:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:8px 12px;border-radius:8px;cursor:pointer}
+    .nav-grid button.active{background:linear-gradient(90deg,var(--accent),#5af0d0); color:#05111b; font-weight:600}
+
+    main{padding:28px 20px}
+    .content{display:grid;grid-template-columns:1fr 360px;gap:28px;max-width:var(--maxw);margin:0 auto}
+
+    /* Left column: lessons */
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.02);}
+    h2.section-title{margin-top:0}
+    section.lesson{margin-bottom:18px;padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
+
+    pre{background:var(--code-bg);padding:14px;border-radius:8px;overflow:auto;border:1px solid rgba(255,255,255,0.02);font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;font-size:13px;color:#cfe8ff}
+    code{white-space:pre}
+    .btn{display:inline-block;background:var(--accent);color:#05111b;padding:8px 12px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+    .muted{color:var(--muted)}
+
+    /* Right column: quick nav + actions */
+    aside{position:relative}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .profile{display:flex;gap:12px;align-items:center}
+    .avatar{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#5af0d0);display:flex;align-items:center;justify-content:center;font-weight:700;color:#05111b}
+    .small{font-size:13px;color:var(--muted)}
+    .side-list{margin-top:14px}
+    .side-list a{display:block;padding:10px;border-radius:8px;color:var(--muted);text-decoration:none}
+    .side-list a:hover{background:rgba(255,255,255,0.02);color:#fff}
+
+    footer{padding:24px 20px;text-align:center;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:980px){.content{grid-template-columns:1fr}.nav-grid{justify-content:center}.title h1{font-size:18px}}
+
+    /* small helpers */
+    .flex{display:flex;gap:10px;align-items:center}
+    .spacer{height:12px}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <div class="brand">
+        <div class="logo">MT</div>
+        <div class="title">
+          <h1>My Training Site</h1>
+          <p>Learning Hub — HTML • CSS • JavaScript • Projects • Freelancing</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="downloadBtn">Download HTML</button>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top:10px">
+      <nav>
+        <div class="nav-grid" id="nav">
+          <button data-target="intro" class="active">Intro</button>
+          <button data-target="html">HTML Basics</button>
+          <button data-target="css">CSS Basics</button>
+          <button data-target="js">JavaScript Basics</button>
+          <button data-target="project">To-Do Project</button>
+          <button data-target="deploy">Deploy & Monetize</button>
+          <button data-target="freelance">Freelancing</button>
+          <button data-target="branding">Branding</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <div>
+        <div class="panel">
+
+          <section id="intro" class="lesson">
+            <h2 class="section-title">Welcome — Your Learning Hub</h2>
+            <p class="meta">A concise, styled reference that contains HTML, CSS, JavaScript basics, a full To-Do project, deployment & monetization guides, and freelancing & branding lessons. Use the navigation above to jump between sections. Copy code directly from the code blocks.</p>
+            <p class="muted">Tip: Use the <strong>Download HTML</strong> button at the top-right to save this page as a single file you can keep.</p>
+          </section>
+
+          <section id="html" class="lesson">
+            <h3>HTML Basics</h3>
+            <p class="meta">Structure, tags, images, links, lists, forms — the building blocks.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    &lt;a href="https://example.com"&gt;Visit example&lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <div class="spacer"></div>
+            <h4>Common tags</h4>
+            <ul>
+              <li>&lt;h1&gt;–&lt;h6&gt; headings</li>
+              <li>&lt;p&gt; paragraph</li>
+              <li>&lt;a href="..."&gt; link</li>
+              <li>&lt;img src="..." alt="..."&gt; image</li>
+              <li>&lt;ul&gt; &lt;ol&gt; &lt;li&gt; lists</li>
+              <li>&lt;form&gt; inputs &amp; buttons</li>
+            </ul>
+          </section>
+
+          <section id="css" class="lesson">
+            <h3>CSS Basics</h3>
+            <p class="meta">Styling: colors, layout (Flexbox), spacing, fonts, and responsive design basics.</p>
+            <pre><code>body {
+  background: #f4f4f4;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  display:flex;
+  gap:20px;
+}
+
+button {
+  background: #7c5cff;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+}
+</code></pre>
+            <div class="spacer"></div>
+            <h4>Box model refresher</h4>
+            <p class="small muted">Every element has margin, border, padding, and content. Use DevTools (Inspect) to try adjustments live.</p>
+          </section>
+
+          <section id="js" class="lesson">
+            <h3>JavaScript Basics</h3>
+            <p class="meta">Variables, functions, events, DOM manipulation, and localStorage.</p>
+            <pre><code>const btn = document.getElementById('myBtn');
+btn.addEventListener('click', () =&gt; {
+  alert('You clicked!');
+});
+
+// Toggle dark mode
+function toggle() {
+  document.body.classList.toggle('dark-mode');
+}</code></pre>
+            <div class="spacer"></div>
+            <h4>DOM & Events</h4>
+            <p class="small muted">Use methods like getElementById, querySelector, addEventListener to make pages interactive.</p>
+          </section>
+
+          <section id="project" class="lesson">
+            <h3>To‑Do List Project (Full Code)</h3>
+            <p class="meta">A complete, small app that saves tasks in localStorage. Copy & paste to try it immediately.</p>
+
+            <pre><code>&lt;!-- index.html (To-Do App) --&gt;
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+  &lt;title&gt;To-Do App&lt;/title&gt;
+  &lt;style&gt;
+    body{font-family:Arial, sans-serif;background:#f4f7f9;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+    .app{background:white;padding:20px;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,0.08);width:320px}
+    input{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd}
+    button{margin-top:10px;padding:10px;border-radius:8px;border:none;background:#7c5cff;color:white;cursor:pointer}
+    ul{list-style:none;padding:0;margin-top:14px}
+    li{display:flex;justify-content:space-between;padding:8px;border-radius:8px;background:#f2f2f2;margin-bottom:8px}
+    .completed{text-decoration:line-through;color:gray}
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;app&quot;&gt;
+    &lt;h3&gt;My To-Do&lt;/h3&gt;
+    &lt;input id=&quot;taskInput&quot; placeholder=&quot;Enter a task&quot;&gt;
+    &lt;button id=&quot;addBtn&quot;&gt;Add Task&lt;/button&gt;
+    &lt;ul id=&quot;taskList&quot;&gt;&lt;/ul&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    const input = document.getElementById('taskInput');
+    const addBtn = document.getElementById('addBtn');
+    const list = document.getElementById('taskList');
+
+    function save(){
+      localStorage.setItem('tasks', list.innerHTML);
+    }
+
+    function load(){
+      list.innerHTML = localStorage.getItem('tasks') || '';
+      attachEvents();
+    }
+
+    function attachEvents(){
+      document.querySelectorAll('.deleteBtn').forEach(btn =&gt; {
+        btn.onclick = () =&gt; { btn.parentElement.remove(); save(); };
+      });
+      document.querySelectorAll('.taskText').forEach(span =&gt; {
+        span.onclick = () =&gt; { span.classList.toggle('completed'); save(); };
+      });
+    }
+
+    addBtn.onclick = () =&gt; {
+      const text = input.value.trim();
+      if(!text) return alert('Please type a task');
+      const li = document.createElement('li');
+      li.innerHTML = `&lt;span class="taskText"&gt;${text}&lt;/span&gt; &lt;button class="deleteBtn"&gt;❌&lt;/button&gt;`;
+      list.appendChild(li);
+      input.value = '';
+      attachEvents(); save();
+    }
+
+    load();
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <p class="small muted">Notes: You can extend this project with date/time, filters, clear-all buttons, or by saving JSON to localStorage for more structured data.</p>
+          </section>
+
+          <section id="deploy" class="lesson">
+            <h3>Deploy & Monetize</h3>
+            <p class="meta">How to publish and make money: Netlify, GitHub Pages, Vercel, sell templates, freelance work.</p>
+            <h4>Quick deploy (Netlify)</h4>
+            <ol>
+              <li>Create account on netlify.com</li>
+              <li>Drag & drop your site folder or connect GitHub</li>
+              <li>Get a public URL — add custom domain if you want</li>
+            </ol>
+            <h4>Monetize ideas</h4>
+            <ul>
+              <li>Sell templates on Gumroad or ThemeForest</li>
+              <li>Offer freelance website builds ($20–$300)</li>
+              <li>Offer maintenance or hosting setup ($10–$50/month per client)</li>
+            </ul>
+          </section>
+
+          <section id="freelance" class="lesson">
+            <h3>Freelancing: Getting Started</h3>
+            <p class="meta">Profiles, pricing, where to find clients (Fiverr, Upwork), and basic client communication scripts.</p>
+            <pre><code>// Example client message
+Hi [Name], I can build a fast, responsive website for your business. 
+I'll deliver in 3 days with one revision included. 
+Here is my sample: https://yourname.netlify.app
+</code></pre>
+            <h4>Pricing guide</h4>
+            <p class="small muted">Landing page $20–$50 • Portfolio $50–$100 • Small business site $100–$300</p>
+          </section>
+
+          <section id="branding" class="lesson">
+            <h3>Branding & Social Strategy</h3>
+            <p class="meta">How to build a developer identity, post projects, and attract clients.</p>
+            <ul>
+              <li>Create a consistent profile photo & short tagline</li>
+              <li>Post weekly: 1 project update or mini-tutorial</li>
+              <li>Use LinkedIn, Twitter (X), and TikTok to showcase progress</li>
+            </ul>
+            <p class="small muted">Goal: one project per week → portfolio growth → paid work.</p>
+          </section>
+
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <div class="profile">
+            <div class="avatar">MT</div>
+            <div>
+              <div style="font-weight:600">My Training Site</div>
+              <div class="small muted">Your personal learning hub</div>
+            </div>
+          </div>
+
+          <div class="side-list">
+            <a href="#intro">Intro</a>
+            <a href="#html">HTML Basics</a>
+            <a href="#css">CSS Basics</a>
+            <a href="#js">JS Basics</a>
+            <a href="#project">To-Do Project</a>
+            <a href="#deploy">Deploy & Monetize</a>
+            <a href="#freelance">Freelancing</a>
+            <a href="#branding">Branding</a>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:8px">
+            <button class="btn" id="copyAll">Copy Page HTML</button>
+            <button class="btn" id="toggleTheme">Toggle Theme</button>
+          </div>
+        </div>
+
+        <div style="height:18px"></div>
+        <div class="card small muted">
+          <div style="font-weight:600;margin-bottom:6px">Quick Tips</div>
+          <div>- Save often. Use GitHub.</div>
+          <div>- Start freelancing with one simple gig.</div>
+          <div>- Reuse your code: templates sell well.</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    Built with ❤️ — open this file in your browser and keep coding. You can edit the content, replace the avatar, or export the file.
+  </footer>
+
+  <script>
+    // Navigation handling
+    document.querySelectorAll('#nav button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.target;
+        if(target){
+          document.querySelectorAll('section.lesson').forEach(s=>s.style.display='none');
+          const el = document.getElementById(target);
+          if(el) el.style.display='block';
+          window.scrollTo({top: el ? el.offsetTop - 100 : 0, behavior:'smooth'});
+        }
+      });
+    });
+
+    // Show only intro initially, others hidden? Keep visible but we'll hide others to keep focus
+    document.querySelectorAll('section.lesson').forEach((s,i)=>{ if(s.id !== 'intro') s.style.display='none'; });
+
+    // Download page as HTML
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const html = '<!doctype html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'my-training-site.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // Copy entire page HTML
+    document.getElementById('copyAll').addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText(document.documentElement.outerHTML);
+        alert('Page HTML copied to clipboard. Paste into a .html file.');
+      }catch(e){
+        alert('Copy failed. Try downloading instead.');
+      }
+    });
+
+    // Toggle a gentle light theme (for readability when printing)
+    document.getElementById('toggleTheme').addEventListener('click', () => {
+      if(document.documentElement.style.filter){
+        document.documentElement.style.filter = '';
+      } else {
+        document.documentElement.style.filter = 'brightness(1.05)';
+      }
+      alert('Toggled reading assist (brightness). You can customize colors in the file.');
+    });
+
+    // Small helper: anchor links scrolling in aside
+    document.querySelectorAll('aside .side-list a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          document.querySelectorAll('section.lesson').forEach(s=>s.style.display='none');
+          el.style.display = 'block';
+          window.scrollTo({top: el.offsetTop - 100, behavior:'smooth'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
 
